@@ -1,0 +1,16 @@
+version: "2.4"
+
+services:
+  sample_react:
+    image: sample_react_image
+    build:
+      context: docker
+      dockerfile: Dockerfile
+    volumes:
+      - ./src/index.js:/workspace/react-sample/src/index.js
+      - ./src/index.css:/workspace/react-sample/src/index.css
+    ports:
+      - "3000:3000"
+    tty: true
+    entrypoint: sh -c "cd react-sample && yarn start"
+    #entrypoint: /bin/bash
